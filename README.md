@@ -1,2 +1,2 @@
 # ING_Util
-Demo project for entry analysis
+Demo project for util
