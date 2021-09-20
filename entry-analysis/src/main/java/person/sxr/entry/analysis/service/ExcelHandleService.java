@@ -35,10 +35,10 @@ public class ExcelHandleService {
     @SneakyThrows
     public void simpleWrite(List<ExcelWritePo> data) {
         String fileWriteName = PathConst.filePathWrite;
-        File file = new File(PathConst.fileName);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
+//        File file = new File(PathConst.fileName);
+//        if (!file.exists()) {
+//            file.createNewFile();
+//        }
         // 这里 需要指定写用哪个class去读，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
         EasyExcel.write(fileWriteName, ExcelWritePo.class).sheet("sheet1").doWrite(data);
     }

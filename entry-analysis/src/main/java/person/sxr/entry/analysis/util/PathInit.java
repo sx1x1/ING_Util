@@ -35,7 +35,7 @@ public class PathInit {
     @PostConstruct
     public void init() {
         PathConst.filePathRead = filePathRead + File.separator + getFileNames().get(0);
-        PathConst.filePathWrite = "result" + filePathWrite + File.separator + getFileNames().get(0);
+        PathConst.filePathWrite = filePathWrite + File.separator + getFileNames().get(0);
         PathConst.fileName = getFileNames().get(0);
     }
 }
