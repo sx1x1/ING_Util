@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2021/9/19 2:55 下午
  */
 @Configuration
-public class PathUtil {
+public class PathInit {
     /**
      * 文件后缀常量
      */
@@ -35,7 +35,7 @@ public class PathUtil {
     @PostConstruct
     public void init() {
         PathConst.filePathRead = filePathRead + File.separator + getFileNames().get(0);
-        PathConst.filePathWrite = filePathWrite + File.separator + getFileNames().get(0);
+        PathConst.filePathWrite = "result" + filePathWrite + File.separator + getFileNames().get(0);
         PathConst.fileName = getFileNames().get(0);
     }
 }
