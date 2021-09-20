@@ -1,26 +1,41 @@
 package person.sxr.entry.analysis.util;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.PostConstruct;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author sxr
  * @date 2021/9/19 2:55 下午
  */
+@Configuration
 public class PathUtil {
+    /**
+     * 文件后缀常量
+     */
+    public static final String XLSX = "xlsx";
 
-    private PathUtil() {
+    @Value("${file.path.read}")
+    private String filePathRead;
+
+    @Value("${file.path.write}")
+    private String filePathWrite;
+
+    public List<String> getFileNames() {
+        File file = new File(filePathRead);
+        String[] list = file.list((dir, name) -> name.contains(XLSX));
+        assert list != null;
+        return Arrays.asList(list);
     }
 
-    /**
-     * 桌面文件根路径
-     */
-    private static final String DESKTOP_PATH = "/Users/sunxiran/Desktop/demo";
-
-    /**
-     * 获取文件路径
-     *
-     * @return 文件路径
-     */
-    public static String getPath() {
-        return DESKTOP_PATH;
+    @PostConstruct
+    public void init() {
+        PathConst.filePathRead = filePathRead + File.separator + getFileNames().get(0);
+        PathConst.filePathWrite = filePathWrite + File.separator + getFileNames().get(0);
+        PathConst.fileName = getFileNames().get(0);
     }
-
 }

@@ -30,33 +30,8 @@ public class EntryAnalysisService {
         Map<Long, List<String>> contentMap = readDataList.stream()
                 .collect(Collectors.toMap(ExcelReadPo::getSerialNumber, t -> contentSubstring(t.getContent())));
 
-        Map<Long, String> keyWordMap = readDataList.stream()
-                .collect(Collectors.toMap(ExcelReadPo::getSerialNumber, t -> StringUtils.substring(t.getContent(), t.getContent().indexOf('【') + 1, t.getContent().indexOf('】'))));
-
         Map<Long, List<String>> map = search(contentMap);
-        /*for (Map.Entry<Long, List<String>> entry : map.entrySet()) {
-            Long key = entry.getKey();
-            // 查出的字符集合
-            List<String> value = entry.getValue();
-            int size = value.size();
-
-            String keyWord = keyWordMap.get(key);
-
-            // 拆分的字符集合
-            List<String> strSubList = contentMap.get(key);
-
-            *//*String s = "";
-            for (int i = 0; i < size; i++) {
-                for (int j = size - 1; j > i; j--) {
-                    s = keyWord.substring(i, j + 1);
-                    if(!value.contains(s)){
-
-                    }
-                }
-            }*//*
-        }*/
         readDataList.forEach(data -> data.setCoarseGrained(map.get(data.getSerialNumber()).stream().filter(a -> a.length() > 1).collect(Collectors.joining("/"))));
-
 
         return readDataList.stream().map(data -> {
             ExcelWritePo writePo = new ExcelWritePo();
