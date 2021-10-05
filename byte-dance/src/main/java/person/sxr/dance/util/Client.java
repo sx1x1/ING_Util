@@ -83,7 +83,7 @@ class MainFrame extends JFrame {
     }
 
     public MainFrame() {
-        setTitle("intlstar code dance 666");
+        setTitle("byte dance");
         initBounds();
         createGif();
         setBounds(x, y, WIDTH, HEIGHT);
