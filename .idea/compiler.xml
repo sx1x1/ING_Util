@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="entry-analysis" />
+        <module name="byte-dance" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="byte-dance" target="1.8" />
       <module name="entry-analysis" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="byte-dance" options="-parameters" />
       <module name="entry-analysis" options="-parameters" />
     </option>
   </component>
