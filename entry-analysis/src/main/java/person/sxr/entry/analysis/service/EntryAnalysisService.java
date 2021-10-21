@@ -49,7 +49,7 @@ public class EntryAnalysisService {
      * @return 能拆分的词条
      */
     public Map<Long, List<String>> search(Map<Long, List<String>> contentMap) {
-        Spider spider = Spider.create(new BaiduBaikePageProcessor()).thread(100);
+        Spider spider = Spider.create(new BaiduBaikePageProcessor()).thread(1000);
         String urlTemplate = "http://baike.baidu.com/search/word?word=%s&pic=1&sug=1&enc=utf8";
 
         Map<Long, List<String>> map = new HashMap<>(contentMap.size());
